@@ -4,7 +4,7 @@ import pyautogui
 mp_hands = mediapipe.solutions.hands
 captured_hands = mp_hands.Hands()
 drawing_option = mediapipe.solutions.drawing_utils
-screen_width , screen_height = pyautogui().size()
+screen_width , screen_height = pyautogui.size()
 camera = cv2.VideoCapture(0)
 x1=y1=x2=y2=0
 
@@ -34,7 +34,7 @@ while True:
                     x2=x
                     y2=y
                     cv2.circle(image, (x,y),3,(0,255,255))
-            dist = y2-y1
+            dist = ((x2-x1)**2 + (y2-y1)**2)**0.5
             print(dist)
             if(dist<40):
                 pyautogui.click()
